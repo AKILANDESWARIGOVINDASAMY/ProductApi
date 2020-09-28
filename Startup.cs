@@ -32,12 +32,12 @@ namespace ProductApi
             services.AddDbContext<ProductDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
             
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
-                {
-                    opt.Audience = Configuration["AAD:ResourceId"];
-                    opt.Authority = $"{Configuration["AAD:Instance"]}{Configuration["AAD:TenantId"]}";
-                });
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(opt =>
+            //    {
+            //        opt.Audience = Configuration["AAD:ResourceId"];
+            //        opt.Authority = $"{Configuration["AAD:Instance"]}{Configuration["AAD:TenantId"]}";
+            //    });
 
 
 
@@ -56,7 +56,7 @@ namespace ProductApi
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
